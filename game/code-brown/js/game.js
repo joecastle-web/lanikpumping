@@ -33,24 +33,32 @@
     cig:    { good: false, r: 17, v: 1.15 },
     hair:   { good: false, r: 23, v: 1.0 },
     pad:    { good: false, r: 25, v: 0.95 },
-    roll:   { good: false, r: 26, v: 0.95 }
+    roll:   { good: false, r: 26, v: 0.95 },
+    duck:   { good: false, r: 22, v: 1.0 },
+    car:    { good: false, r: 22, v: 1.1 },
+    brick:  { good: false, r: 18, v: 1.12 },
+    hamster:{ good: false, r: 24, v: 0.92, bonus: 250 }
   };
 
   var QUIPS = {
     wipe: ['LIAR!', '"FLUSHABLE"', 'MARKETING!'],
     ptowel: ['TOO SWOLE!', 'NOT TP!'],
-    grease: ['PIPE CEMENT!', 'FATBERG FUEL!'],
+    grease: ['FATBERG FUEL!', 'NOT A DRAIN SNACK!'],
     toy: ['NOT A TOY BOX!', 'RAWR. NO.'],
     phone: ['CALL LANIK ON IT!', 'HELLO? NO.'],
-    fish: ['RESCUED!', 'SWIM FREE!'],
+    fish: ['PROPER BURIAL!', 'HE DESERVED BETTER!'],
     diaper: ['ABSOLUTELY NOT', 'CODE YELLOW!'],
     sock: ['HOW?!', 'LAUNDRY DAY!'],
     swab: ['TINY TERROR', 'EAR THIS!'],
     floss: ['STRINGY MENACE'],
     cig: ['GROSS.', 'BUTT OUT!'],
-    hair: ['EW.', 'HAIRBALL!'],
+    hair: ['EW.', 'DRAIN SPIDER!'],
     pad: ['TRASH. ALWAYS.'],
-    roll: ['A WHOLE ROLL?!', 'SLOW DOWN!']
+    roll: ['A WHOLE ROLL?!', 'SLOW DOWN!'],
+    duck: ['NOT BATH TIME!', 'QUACK. NO.'],
+    car: ['NO PARKING!', 'VROOM. TRASH.'],
+    brick: ['FOOT KILLER!', 'BUILD ELSEWHERE!'],
+    hamster: ['BACKYARD FUNERAL!', 'NOT A BURIAL AT SEA!']
   };
 
   var OOPS_QUIPS = ['THAT BELONGS THERE!', 'THE GOOD STUFF!', 'WHY?!', 'LET IT RIDE!'];
@@ -59,38 +67,38 @@
     {
       name: 'MONDAY MORNING', sub: 'ease into it',
       good: 6, junk: 4, speed: 98, interval: 2.0, maxAlive: 3, passive: 0.14, miss: 2.0,
-      goodMix: { pee: 2, poo: 3, tp: 2 }, junkMix: { wipe: 3, toy: 1 },
-      factTitle: 'SARGE SAYS', fact: 'THE 3 P\'s, MAGGOT! Pee, Poo and (toilet) Paper. NOTHING else goes down the hatch!'
+      goodMix: { pee: 2, poo: 3, tp: 2 }, junkMix: { wipe: 3, duck: 1 },
+      factTitle: 'LANIK GUY SAYS', fact: 'The 3 P\'s, friend: Pee, Poo and (toilet) Paper. That\'s the whole guest list. NOTHING else goes down the hatch!'
     },
     {
       name: 'THE "FLUSHABLE" LIE', sub: 'believe nothing',
       good: 7, junk: 6, speed: 104, interval: 1.7, maxAlive: 4, passive: 0.16, miss: 2.5,
       goodMix: { pee: 2, poo: 3, tp: 2 }, junkMix: { wipe: 4, swab: 1, ptowel: 1 },
-      factTitle: 'SARGE SAYS', fact: '"Flushable" wipes are a DIRTY LIE, soldier. That label is marketing, not science. They NEVER break down!'
+      factTitle: 'LANIK GUY SAYS', fact: '"Flushable" wipes are a dirty lie. That label is marketing, not science. I\'ve pumped a thousand tanks, and the wipes NEVER break down!'
     },
     {
       name: 'TACO TUESDAY', sub: 'hold your fire on the good stuff',
       good: 8, junk: 8, speed: 111, interval: 1.55, maxAlive: 5, passive: 0.19, miss: 3.0,
-      goodMix: { poo: 3, poo2: 2, poo3: 2, pee: 1 }, junkMix: { grease: 4, wipe: 2, swab: 1, toy: 1 },
-      factTitle: 'SARGE SAYS', fact: 'GREASE hardens into PIPE CEMENT. Fatbergs are real, and they are DISGUSTING. The kitchen sink is not a deep fryer graveyard!'
+      goodMix: { poo: 3, poo2: 2, poo3: 2, pee: 1 }, junkMix: { grease: 4, wipe: 2, toy: 1, brick: 1 },
+      factTitle: 'LANIK GUY SAYS', fact: 'Grease sets up in your pipes like concrete. Fatbergs are real, and I\'ve shaken hands with a few. The sink is not a deep fryer graveyard!'
     },
     {
       name: 'HOUSE PARTY', sub: 'your guests are animals',
       good: 9, junk: 11, speed: 120, interval: 1.35, maxAlive: 6, passive: 0.21, miss: 3.5,
-      goodMix: { pee: 3, poo: 3, poo2: 2, tp: 1 }, junkMix: { cig: 3, ptowel: 2, phone: 1, sock: 2, floss: 2, fish: 1 },
-      factTitle: 'SARGE SAYS', fact: 'Paper towels are toilet paper that LIFTS WEIGHTS. They do not dissolve. They do not surrender. TRASH them!'
+      goodMix: { pee: 3, poo: 3, poo2: 2, tp: 1 }, junkMix: { cig: 2, ptowel: 2, phone: 1, sock: 2, floss: 1, car: 1, duck: 1, fish: 1 },
+      factTitle: 'LANIK GUY SAYS', fact: 'Paper towels are toilet paper that LIFTS WEIGHTS. They do not dissolve. They do not surrender. TRASH them!'
     },
     {
       name: 'LAUNDRY DAY', sub: 'a whole roll is not a serving size',
       good: 10, junk: 14, speed: 129, interval: 1.2, maxAlive: 7, passive: 0.23, miss: 4.0,
-      goodMix: { tp: 4, poo: 3, poo2: 2, pee: 1 }, junkMix: { roll: 3, pad: 2, diaper: 2, hair: 3, wipe: 2, sock: 2 },
-      factTitle: 'SARGE SAYS', fact: 'If it can ABSORB, it can EXPAND. Diapers and pads are tank torpedoes. Trash it, don\'t flush it!'
+      goodMix: { tp: 4, poo: 3, poo2: 2, pee: 1 }, junkMix: { roll: 3, pad: 2, diaper: 2, hair: 2, wipe: 2, sock: 1, hamster: 1, brick: 1 },
+      factTitle: 'LANIK GUY SAYS', fact: 'If it can ABSORB, it can EXPAND. Diapers and pads are tank torpedoes. Trash it, don\'t flush it!'
     },
     {
       name: 'CODE BROWN', sub: 'everything, everywhere, all at once',
       good: 11, junk: 18, speed: 140, interval: 1.1, maxAlive: 8, passive: 0.25, miss: 4.5,
-      goodMix: { poo: 3, poo2: 2, poo3: 2, pee: 2, tp: 2 }, junkMix: { wipe: 3, grease: 3, ptowel: 2, roll: 2, hair: 2, cig: 2, swab: 1, diaper: 1, phone: 1, fish: 1 },
-      factTitle: 'SARGE\'S FINAL WORD', fact: 'Every tank fills up eventually. That\'s not defeat, that\'s PLUMBING. Pump every 3 years, or kiss your leach lines goodbye!'
+      goodMix: { poo: 3, poo2: 2, poo3: 2, pee: 2, tp: 2 }, junkMix: { wipe: 2, grease: 2, ptowel: 2, roll: 2, hair: 2, cig: 1, swab: 1, diaper: 1, phone: 1, toy: 1, duck: 1, car: 1, brick: 1, hamster: 1, fish: 1 },
+      factTitle: 'LANIK GUY\'S FINAL WORD', fact: 'Every tank fills up eventually. That\'s not defeat, that\'s PLUMBING. Pump every 3 years, and remember: We Take Crap From Everyone!'
     }
   ];
 

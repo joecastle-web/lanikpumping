@@ -293,7 +293,7 @@ body {
 .how-card p { font-size: 17px; font-weight: 600; line-height: 1.25; }
 .how-card b { color: var(--red); }
 
-/* fact (Sarge) */
+/* fact (Lanik Guy tip card) */
 
 #scr-fact {
   justify-content: flex-end;
@@ -302,8 +302,8 @@ body {
   background: linear-gradient(rgba(16, 18, 22, 0) 30%, rgba(16, 18, 22, 0.88) 62%);
 }
 
-#sarge-img { width: 150px; height: 150px; animation: sargeIn 0.4s cubic-bezier(0.2, 1.5, 0.4, 1); }
-@keyframes sargeIn { from { transform: translateY(80px) scale(0.4); } }
+#tip-mascot { width: 150px; height: 150px; animation: tipIn 0.4s cubic-bezier(0.2, 1.5, 0.4, 1); }
+@keyframes tipIn { from { transform: translateY(80px) scale(0.4); } }
 
 .fact-box {
   width: 100%;
@@ -577,6 +577,6 @@ body {
 /* reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
-  .logo, #crit-title, .btn-call.show, .phone-card, .tapline, #scr-skip, #sarge-img, #title-mascot { animation: none !important; }
+  .logo, #crit-title, .btn-call.show, .phone-card, .tapline, #scr-skip, #tip-mascot, #title-mascot { animation: none !important; }
   .btn-call { transform: scale(1); }
 }
