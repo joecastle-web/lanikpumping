@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Code Brown | the septic survival game by Lanik Pumping Service</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="description" content="Code Brown: a gross, hilarious septic survival game from Lanik Pumping Service. Tap the junk, spare the 3 P's, and when the tank hits critical... CALL LANIK.">
+<meta property="og:title" content="Code Brown: a septic survival game">
+<meta property="og:description" content="Defend your septic tank from 'flushable' lies. By Lanik Pumping Service. We Take Crap From Everyone!">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E%F0%9F%92%A9%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <canvas id="game" width="480" height="800"></canvas>
+    <div id="flash"></div>
+
+    <div id="hud" class="hide">
+      <div id="hud-left">
+        <div id="hud-score">0</div>
+        <div id="hud-combo" class="hide">x2 COMBO!</div>
+      </div>
+      <div id="hud-wave" class="chip">WAVE 1/6</div>
+      <div id="hud-right">
+        <button id="btn-mute" class="hud-btn" aria-label="toggle sound" type="button">♪</button>
+        <button id="btn-pause" class="hud-btn" aria-label="pause" type="button">❚❚</button>
+      </div>
+    </div>
+
+    <div id="wave-banner" class="hide">
+      <div id="wb-name"></div>
+      <div id="wb-sub"></div>
+    </div>
+
+    <div id="screens">
+      <section id="scr-title" class="screen">
+        <div class="title-top">
+          <div class="logo-wrap">
+            <h1 class="logo"><span class="logo-code">CODE</span><span class="logo-brown">BROWN</span></h1>
+            <div class="logo-sub">A SEPTIC SURVIVAL GAME</div>
+          </div>
+        </div>
+        <div class="title-mid">
+          <img id="title-mascot" alt="the Lanik mascot, thumbs up, standing in you know what">
+          <button id="btn-play" class="btn btn-red btn-huge" type="button">PLAY</button>
+          <button id="btn-how" class="btn btn-blue" type="button">HOW TO PLAY</button>
+          <div id="title-best" class="chip chip-gold hide">BEST: 0</div>
+        </div>
+        <div class="title-bottom">
+          <div class="brandline">presented by <b>LANIK PUMPING SERVICE</b> <span class="dot">•</span> SINCE 1999</div>
+          <div class="slogan">"We Take Crap From Everyone!"</div>
+        </div>
+      </section>
+
+      <section id="scr-howto" class="screen">
+        <h2 class="scr-h">HOW TO PLAY</h2>
+        <div class="how-card">
+          <img id="how-i1" alt="a flushable wipe">
+          <p><b>TAP THE JUNK!</b> Fling wipes, grease and garbage into the trash before they clog your tank.</p>
+        </div>
+        <div class="how-card">
+          <img id="how-i2" alt="a happy poo">
+          <p><b>DON'T TAP THE 3 P's.</b> Pee, Poo and (toilet) Paper BELONG in the tank. Let them ride.</p>
+        </div>
+        <div class="how-card">
+          <img id="how-i3" alt="the Lanik truck">
+          <p><b>THE TANK ALWAYS FILLS.</b> That's plumbing, baby. When it hits critical: <b>CALL LANIK!</b></p>
+        </div>
+        <button id="btn-start" class="btn btn-red" type="button">LET'S FLUSH</button>
+      </section>
+
+      <section id="scr-fact" class="screen">
+        <img id="sarge-img" alt="Sarge, the drill sergeant poo">
+        <div class="fact-box">
+          <div id="fact-title">SARGE SAYS</div>
+          <p id="fact-text"></p>
+        </div>
+        <div class="tapline">TAP ANYWHERE TO CONTINUE</div>
+      </section>
+
+      <section id="scr-critical" class="screen">
+        <div id="crit-title">TANK AT 99%</div>
+        <div id="crit-sub">This is NOT a drill, soldier.</div>
+        <button id="btn-call" class="btn btn-red btn-call" type="button">CALL LANIK</button>
+      </section>
+
+      <section id="scr-calling" class="screen">
+        <div class="phone-card">
+          <div class="phone-head">LANIK PUMPING SERVICE</div>
+          <div class="phone-num">1-877-LANIK-56</div>
+          <div id="call-line" class="phone-line">RING... RING...</div>
+        </div>
+      </section>
+
+      <section id="scr-results" class="screen">
+        <div id="res-title">CRISIS AVERTED!</div>
+        <div id="res-gradewrap">
+          <div id="res-grade">A</div>
+          <div id="res-grade-col">
+            <div id="res-grade-title">FLUSH GORDON</div>
+            <div class="res-chips">
+              <span id="res-score" class="chip">SCORE 0</span>
+              <span id="res-best" class="chip chip-gold">BEST 0</span>
+              <span id="res-stars" class="chip">★ 0/18</span>
+            </div>
+          </div>
+        </div>
+        <ul id="res-stats"></ul>
+        <div class="res-cta">
+          <div class="res-cta-headrow">
+            <img id="res-mascot" alt="the Lanik mascot">
+            <div class="res-cta-head">Real tank feeling full?</div>
+          </div>
+          <a id="res-call" class="btn btn-red" href="tel:19517635650">CALL LANIK: 951-763-5650</a>
+          <div class="res-brandline">1-877-LANIK-56 <span class="dot">•</span> Riverside County &amp; the Inland Empire <span class="dot">•</span> Since 1999</div>
+          <div class="res-potty">P.S. We also rent port-a-potties for parties, events and job sites. Nature never takes a day off.</div>
+        </div>
+        <div class="res-btns">
+          <button id="btn-again" class="btn btn-yellow" type="button">PLAY AGAIN</button>
+          <a id="res-site" class="btn btn-blue" href="https://lanikpumping.com" target="_blank" rel="noopener">lanikpumping.com</a>
+        </div>
+      </section>
+
+      <section id="scr-pause" class="screen">
+        <h2 class="scr-h">PAUSED</h2>
+        <div class="pause-tank-note">(your tank is still full, by the way)</div>
+        <button id="btn-resume" class="btn btn-red" type="button">RESUME</button>
+        <button id="btn-restart" class="btn btn-yellow" type="button">RESTART</button>
+        <button id="btn-quit" class="btn btn-blue" type="button">MAIN MENU</button>
+        <button id="btn-mute2" class="btn btn-ghost" type="button">SOUND: ON</button>
+      </section>
+
+      <div id="scr-skip" class="hide">TAP TO SKIP ▸</div>
+      <div id="rotate-hint" class="hide">rotate your phone for the full mess</div>
+    </div>
+
+    <div id="fps-badge" class="hide"></div>
+  </div>
+</div>
+<noscript>
+  <div class="noscript-box">
+    CODE BROWN needs JavaScript to run. Your septic tank, however, is filling up right now, JavaScript or not.<br>
+    <b>Lanik Pumping Service</b>: 951-763-5650 or 1-877-LANIK-56. We Take Crap From Everyone!
+  </div>
+</noscript>
+
+<script>
+window.CB = {
+  W: 480, H: 800, state: 'BOOT', reduceMotion: false,
+  COLORS: {
+    red:'#c8202b', redDark:'#9c1820', blue:'#1c3f8f', blueDark:'#142e6b', ink:'#1a1a1a',
+    cream:'#f5f3ee', hazard:'#f4c20d', hazardDark:'#c79a05', charcoal:'#14161a',
+    sky:'#8fd9ff', skyHi:'#d8f4ff', sun:'#ffd23f',
+    grass:'#7ecb3f', grassDark:'#57a82b', dirt:'#a8713f', dirtDark:'#7d5024', dirtDeep:'#5f3c1a',
+    poo:'#8a5a33', pooDark:'#5f3c1e', pooHi:'#b07c4a',
+    sludge:'#7a5426', sludgeDark:'#59391a', water:'#6cc8f2',
+    steel:'#cfd6dd', steelHi:'#f2f6f9', steelDark:'#98a3ad',
+    hose:'#3fa02b', hoseDark:'#2c7a1c', nozzle:'#f5641e',
+    white:'#ffffff', gold:'#ffc53d'
+  },
+  util: {}, save: null
+};
+(function () {
+  var U = CB.util;
+  U.TAU = Math.PI * 2;
+  U.clamp = function (v, a, b) { return v < a ? a : (v > b ? b : v); };
+  U.lerp = function (a, b, t) { return a + (b - a) * t; };
+  U.rand = function (a, b) { return a + Math.random() * (b - a); };
+  U.randInt = function (a, b) { return Math.floor(U.rand(a, b + 1)); };
+  U.pick = function (arr) { return arr[(Math.random() * arr.length) | 0]; };
+  U.easeOutCubic = function (t) { return 1 - Math.pow(1 - t, 3); };
+  U.easeInCubic = function (t) { return t * t * t; };
+  U.easeInOut = function (t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; };
+  U.easeOutBack = function (t) {
+    var c = 1.70158;
+    return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2);
+  };
+})();
+(function () {
+  var mem = { best: 0, muted: false, seenHow: false };
+  try {
+    var raw = localStorage.getItem('cb1');
+    if (raw) {
+      var d = JSON.parse(raw);
+      for (var k in mem) { if (Object.prototype.hasOwnProperty.call(d, k)) mem[k] = d[k]; }
+    }
+  } catch (e) { /* private mode: memory-only saves */ }
+  CB.save = {
+    get: function (k) { return mem[k]; },
+    set: function (k, v) {
+      mem[k] = v;
+      try { localStorage.setItem('cb1', JSON.stringify(mem)); } catch (e) { /* keep playing */ }
+    }
+  };
+})();
+</script>
+<script src="js/audio.js"></script>
+<script src="js/art.js"></script>
+<script src="js/game.js"></script>
+<script src="js/cinematics.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
