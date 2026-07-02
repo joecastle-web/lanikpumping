@@ -562,14 +562,17 @@
     g.restore();
   }
 
-  /* THE Lanik mascot, faithful to the character painted on the real truck:
-     chubby, orange cap, black shades, huge grin, white tee + gloves, blue
-     shorts, work boots, green hose, standing in his puddle. (x,y) = ground
-     point between his feet; at s=1 he stands ~150 world px tall. */
+  /* THE Lanik mascot, faithful to the decal painted on the real truck:
+     stocky little guy with a HUGE head, wide black shades, an enormous
+     teeth-grid grin, orange-red cap, white tee + gloves, blue shorts, big
+     tan work boots, green hose loop, standing in his puddle. (x,y) = ground
+     point between his feet; at s=1 he stands ~180 world px tall. */
   function mascot(g, x, y, o) {
     o = o || {};
     var s = o.s || 1;
-    var leg = o.moving ? Math.sin((o.walk || 0) * 10) * 7 : 0;
+    var leg = o.moving ? Math.sin((o.walk || 0) * 10) * 6 : 0;
+    var SKIN = '#f2ead9';
+    var CAP = '#e0532e';
     g.save();
     g.translate(x, y);
     if (o.flip) g.scale(-1, 1);
@@ -580,96 +583,94 @@
     if (o.puddle) {
       g.fillStyle = '#6b4a26';
       g.beginPath();
-      g.ellipse(0, -2, 52, 12, 0, 0, U.TAU);
-      g.ellipse(-46, 1, 14, 6, 0, 0, U.TAU);
-      g.ellipse(45, 0, 16, 7, 0, 0, U.TAU);
+      g.ellipse(0, -2, 54, 12, 0, 0, U.TAU);
+      g.ellipse(-48, 1, 14, 6, 0, 0, U.TAU);
+      g.ellipse(47, 0, 16, 7, 0, 0, U.TAU);
       g.fill();
       g.fillStyle = '#59391a';
       g.beginPath();
-      g.ellipse(0, -1, 38, 7, 0, 0, U.TAU);
+      g.ellipse(0, -1, 40, 7, 0, 0, U.TAU);
       g.fill();
     }
     if (o.bucket) {
       g.fillStyle = '#3f8fd6';
       g.beginPath();
-      g.moveTo(-68, -26);
-      g.lineTo(-46, -26);
-      g.lineTo(-49, -2);
+      g.moveTo(-86, -30);
+      g.lineTo(-62, -30);
       g.lineTo(-65, -2);
+      g.lineTo(-83, -2);
       g.closePath();
       g.fill();
       g.strokeStyle = C.ink;
       g.lineWidth = 3;
       g.stroke();
       g.beginPath();
-      g.arc(-57, -26, 10, Math.PI, 0);
+      g.arc(-74, -30, 11, Math.PI, 0);
       g.lineWidth = 2.5;
       g.stroke();
     }
     if (o.hose) {
       var hosePath = function () {
         g.beginPath();
-        g.moveTo(-26, -62);
-        g.bezierCurveTo(-54, -52, -60, -34, -44, -24);
-        g.arc(-34, -18, 13, 3.6, 9.2);
-        g.bezierCurveTo(-10, -2, 20, -10, 36, -5);
+        g.moveTo(-30, -56);
+        g.bezierCurveTo(-58, -48, -68, -32, -58, -20);
+        g.arc(-42, -20, 17, 3.4, 9.0);
+        g.bezierCurveTo(-8, -2, 22, -10, 38, -5);
       };
       g.strokeStyle = C.hoseDark;
-      g.lineWidth = 11;
+      g.lineWidth = 12;
       hosePath();
       g.stroke();
       g.strokeStyle = C.hose;
-      g.lineWidth = 7;
+      g.lineWidth = 8;
       hosePath();
       g.stroke();
       g.fillStyle = C.nozzle;
-      rr(g, 34, -11, 13, 10, 3);
+      rr(g, 36, -11, 13, 10, 3);
       g.fill();
       g.strokeStyle = C.ink;
       g.lineWidth = 2.5;
-      rr(g, 34, -11, 13, 10, 3);
+      rr(g, 36, -11, 13, 10, 3);
       g.stroke();
     }
 
-    /* legs + boots */
+    /* short thick legs + big boots */
+    function legPaths() {
+      g.beginPath();
+      g.moveTo(-11, -46);
+      g.lineTo(-12 + leg, -14);
+      g.moveTo(11, -46);
+      g.lineTo(12 - leg, -14);
+      g.stroke();
+    }
     g.strokeStyle = C.ink;
-    g.lineWidth = 13;
-    g.beginPath();
-    g.moveTo(-9, -48);
-    g.lineTo(-10 + leg, -12);
-    g.moveTo(9, -48);
-    g.lineTo(10 - leg, -12);
-    g.stroke();
-    g.strokeStyle = '#f2cfa5';
-    g.lineWidth = 9;
-    g.beginPath();
-    g.moveTo(-9, -48);
-    g.lineTo(-10 + leg, -12);
-    g.moveTo(9, -48);
-    g.lineTo(10 - leg, -12);
-    g.stroke();
+    g.lineWidth = 15;
+    legPaths();
+    g.strokeStyle = SKIN;
+    g.lineWidth = 11;
+    legPaths();
     function boot(bx) {
-      g.fillStyle = '#c98f4e';
-      rr(g, bx - 9, -14, 25, 14, 5);
+      g.fillStyle = '#bc8b52';
+      rr(g, bx - 11, -16, 30, 16, 6);
       g.fill();
       g.strokeStyle = C.ink;
       g.lineWidth = 3;
-      rr(g, bx - 9, -14, 25, 14, 5);
+      rr(g, bx - 11, -16, 30, 16, 6);
       g.stroke();
-      g.fillStyle = '#8a5a26';
-      rr(g, bx - 9, -6, 25, 6, 3);
+      g.fillStyle = '#8f6534';
+      rr(g, bx - 11, -7, 30, 7, 3);
       g.fill();
     }
-    boot(-10 + leg);
-    boot(10 - leg);
+    boot(-12 + leg);
+    boot(12 - leg);
 
     /* denim shorts */
     g.fillStyle = '#3b6fd6';
-    rr(g, -19, -68, 38, 25, 8);
+    rr(g, -21, -68, 42, 26, 9);
     g.fill();
     g.strokeStyle = C.ink;
     g.lineWidth = 3.5;
-    rr(g, -19, -68, 38, 25, 8);
+    rr(g, -21, -68, 42, 26, 9);
     g.stroke();
     g.strokeStyle = '#2b52a3';
     g.lineWidth = 2.5;
@@ -678,136 +679,160 @@
     g.lineTo(0, -46);
     g.stroke();
 
-    /* belly in the white tee */
+    /* stocky pear torso in the white tee */
+    function torsoPath() {
+      g.beginPath();
+      g.moveTo(-19, -104);
+      g.bezierCurveTo(-31, -95, -33, -76, -26, -64);
+      g.lineTo(26, -64);
+      g.bezierCurveTo(33, -76, 31, -95, 19, -104);
+      g.quadraticCurveTo(0, -110, -19, -104);
+      g.closePath();
+    }
     g.fillStyle = '#fff';
-    g.beginPath();
-    g.ellipse(0, -86, 26, 25, 0, 0, U.TAU);
+    torsoPath();
     g.fill();
     g.strokeStyle = C.ink;
     g.lineWidth = 3.5;
-    g.beginPath();
-    g.ellipse(0, -86, 26, 25, 0, 0, U.TAU);
+    torsoPath();
     g.stroke();
-    gloss(g, -9, -96, 6, 3);
-    if (!o.flip) sticker(g, 'LANIK', 0, -84, 8, C.blue, 0);
+    gloss(g, -11, -94, 6, 3);
+    if (!o.flip) sticker(g, 'LANIK', 0, -86, 8.5, C.blue, 0);
 
-    /* arms (white sleeves, ink-outlined) + gloves */
+    /* thick arms (white sleeves, ink-outlined) + gloves */
     function armPaths() {
       g.beginPath();
       if (o.hose) {
-        g.moveTo(-18, -98);
-        g.quadraticCurveTo(-32, -84, -26, -64);
+        g.moveTo(-17, -98);
+        g.quadraticCurveTo(-33, -84, -30, -58);
       } else if (o.carrying) {
-        g.moveTo(-18, -98);
-        g.lineTo(-34, -80);
+        g.moveTo(-17, -98);
+        g.lineTo(-36, -80);
       } else {
-        g.moveTo(-18, -98);
-        g.lineTo(-25, -70 + leg * 0.5);
+        g.moveTo(-17, -98);
+        g.lineTo(-26, -66 + leg * 0.5);
       }
       if (o.thumbsUp) {
-        g.moveTo(18, -98);
-        g.lineTo(33, -114);
+        g.moveTo(17, -98);
+        g.quadraticCurveTo(36, -92, 41, -116);
       } else {
-        g.moveTo(18, -98);
-        g.lineTo(26, -70 - leg * 0.5);
+        g.moveTo(17, -98);
+        g.lineTo(27, -66 - leg * 0.5);
       }
       g.stroke();
     }
     g.strokeStyle = C.ink;
-    g.lineWidth = 12;
+    g.lineWidth = 14;
     armPaths();
     g.strokeStyle = '#fff';
-    g.lineWidth = 8;
+    g.lineWidth = 10;
     armPaths();
-    function glove(gx, gy) {
+    function glove(gx, gy, r) {
       g.fillStyle = '#fff';
       g.beginPath();
-      g.arc(gx, gy, 6.5, 0, U.TAU);
+      g.arc(gx, gy, r || 7, 0, U.TAU);
       g.fill();
       g.strokeStyle = C.ink;
       g.lineWidth = 2.5;
       g.stroke();
     }
-    if (o.hose) glove(-26, -63);
-    else if (o.carrying) glove(-34, -80);
-    else glove(-25, -70 + leg * 0.5);
+    if (o.hose) glove(-30, -57);
+    else if (o.carrying) glove(-36, -80);
+    else glove(-26, -66 + leg * 0.5);
     if (o.thumbsUp) {
+      glove(41, -118, 10);
       g.fillStyle = '#fff';
-      g.beginPath();
-      g.arc(34, -117, 8, 0, U.TAU);
+      rr(g, 37, -139, 9, 17, 4.5);
       g.fill();
       g.strokeStyle = C.ink;
       g.lineWidth = 2.5;
-      g.stroke();
-      g.fillStyle = '#fff';
-      rr(g, 30.5, -132, 8, 13, 4);
-      g.fill();
-      rr(g, 30.5, -132, 8, 13, 4);
+      rr(g, 37, -139, 9, 17, 4.5);
       g.stroke();
     } else {
-      glove(26, -70 - leg * 0.5);
+      glove(27, -66 - leg * 0.5);
     }
 
-    /* head: pale, shades, enormous grin */
-    g.fillStyle = '#f5d7ae';
+    /* HUGE head: ears, pale face, giant teeth-grid grin, wide shades */
+    g.fillStyle = SKIN;
     g.beginPath();
-    g.arc(0, -126, 16, 0, U.TAU);
-    g.fill();
-    g.strokeStyle = C.ink;
-    g.lineWidth = 3;
-    g.stroke();
-    /* grin: white teeth band */
-    g.fillStyle = '#fff';
-    g.beginPath();
-    g.moveTo(-11, -122);
-    g.quadraticCurveTo(0, -119, 12, -123);
-    g.quadraticCurveTo(8, -109, -3, -111);
-    g.quadraticCurveTo(-9, -113, -11, -122);
-    g.closePath();
-    g.fill();
-    g.strokeStyle = C.ink;
-    g.lineWidth = 2.2;
-    g.stroke();
-    g.lineWidth = 1.4;
-    g.beginPath();
-    g.moveTo(-5, -120);
-    g.lineTo(-4, -112);
-    g.moveTo(1, -120);
-    g.lineTo(2, -112);
-    g.moveTo(7, -121);
-    g.lineTo(7, -113);
-    g.stroke();
-    /* shades */
-    g.fillStyle = C.ink;
-    rr(g, -15, -137, 30, 11, 5);
-    g.fill();
-    g.fillStyle = 'rgba(255,255,255,0.35)';
-    g.beginPath();
-    g.moveTo(-10, -134);
-    g.lineTo(-5, -128);
-    g.lineTo(-8, -128);
-    g.lineTo(-12, -133);
-    g.closePath();
-    g.fill();
-    /* orange cap */
-    g.fillStyle = C.nozzle;
-    g.beginPath();
-    g.arc(0, -137, 15, Math.PI, 0);
-    g.closePath();
-    g.fill();
-    g.strokeStyle = C.ink;
-    g.lineWidth = 3;
-    g.stroke();
-    rr(g, 5, -143, 21, 7, 3.5);
-    g.fillStyle = C.nozzle;
+    g.arc(-27, -134, 5.5, 0, U.TAU);
+    g.arc(27, -134, 5.5, 0, U.TAU);
     g.fill();
     g.strokeStyle = C.ink;
     g.lineWidth = 2.5;
-    rr(g, 5, -143, 21, 7, 3.5);
-    g.stroke();
-    g.fillStyle = '#d14e10';
     g.beginPath();
-    g.arc(0, -152, 3, 0, U.TAU);
+    g.arc(-27, -134, 5.5, 0, U.TAU);
+    g.stroke();
+    g.beginPath();
+    g.arc(27, -134, 5.5, 0, U.TAU);
+    g.stroke();
+    g.fillStyle = SKIN;
+    g.beginPath();
+    g.arc(0, -134, 27, 0, U.TAU);
+    g.fill();
+    g.strokeStyle = C.ink;
+    g.lineWidth = 3.5;
+    g.stroke();
+    /* the grin fills the whole lower face */
+    g.fillStyle = '#fff';
+    g.beginPath();
+    g.moveTo(-21, -135);
+    g.quadraticCurveTo(0, -127, 21, -135);
+    g.quadraticCurveTo(17, -109, 0, -107);
+    g.quadraticCurveTo(-17, -109, -21, -135);
+    g.closePath();
+    g.fill();
+    g.strokeStyle = C.ink;
+    g.lineWidth = 2.8;
+    g.stroke();
+    g.lineWidth = 1.5;
+    g.beginPath();
+    g.moveTo(-13, -131);
+    g.lineTo(-12, -112);
+    g.moveTo(-6.5, -130);
+    g.lineTo(-6, -109);
+    g.moveTo(0, -129);
+    g.lineTo(0, -108);
+    g.moveTo(6.5, -130);
+    g.lineTo(6, -109);
+    g.moveTo(13, -131);
+    g.lineTo(12, -112);
+    g.stroke();
+    g.beginPath();
+    g.moveTo(-18, -122);
+    g.lineTo(18, -122);
+    g.stroke();
+    /* wide wraparound shades */
+    g.fillStyle = C.ink;
+    rr(g, -26, -153, 52, 13, 6);
+    g.fill();
+    g.fillStyle = 'rgba(255,255,255,0.35)';
+    g.beginPath();
+    g.moveTo(-19, -151);
+    g.lineTo(-11, -142);
+    g.lineTo(-15, -142);
+    g.lineTo(-22, -150);
+    g.closePath();
+    g.fill();
+    /* orange-red cap */
+    g.fillStyle = CAP;
+    g.beginPath();
+    g.arc(0, -153, 27, Math.PI, 0);
+    g.closePath();
+    g.fill();
+    g.strokeStyle = C.ink;
+    g.lineWidth = 3.5;
+    g.stroke();
+    rr(g, 11, -164, 29, 9, 4.5);
+    g.fillStyle = CAP;
+    g.fill();
+    g.strokeStyle = C.ink;
+    g.lineWidth = 2.5;
+    rr(g, 11, -164, 29, 9, 4.5);
+    g.stroke();
+    g.fillStyle = '#b23f16';
+    g.beginPath();
+    g.arc(0, -180, 3.2, 0, U.TAU);
     g.fill();
 
     g.restore();
@@ -817,7 +842,7 @@
   function tech(g, x, y, o) {
     o = o || {};
     mascot(g, x, y, {
-      s: 0.52,
+      s: 0.43,
       walk: o.walk,
       moving: o.moving,
       flip: o.flip,
@@ -1575,7 +1600,7 @@
     c.height = size * 2;
     var g = c.getContext('2d');
     g.scale(2, 2);
-    var k = size / 166;
+    var k = size / 196;
     mascot(g, size * 0.58, size * 0.97, {
       s: k,
       thumbsUp: true,
