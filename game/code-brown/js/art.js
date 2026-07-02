@@ -275,25 +275,46 @@
       face(g, 0, -2, 0.8, 'angry');
       g.restore();
     });
-    sprite('grease', 62, 56, function (g) {
+    sprite('grease', 60, 62, function (g) {
+      /* the grease jar: bacon fat hunting for a drain to ruin */
+      g.save();
+      g.rotate(0.1);
       g.fillStyle = '#f2a83b';
       g.beginPath();
-      g.ellipse(0, -2, 24, 18, 0, 0, U.TAU);
+      g.ellipse(-6, -22, 9, 6, 0, 0, U.TAU);
       g.fill();
       g.beginPath();
-      g.ellipse(-14, 8, 9, 8, 0, 0, U.TAU);
-      g.ellipse(14, 9, 8, 7, 0, 0, U.TAU);
+      g.ellipse(-6, -22, 9, 6, 0, 0, U.TAU);
+      ink(g, 2.5);
+      g.fillStyle = '#f2a83b';
+      g.beginPath();
+      g.ellipse(6, -24, 7, 5, 0, 0, U.TAU);
       g.fill();
       g.beginPath();
-      g.ellipse(0, -2, 24, 18, 0, 0, U.TAU);
-      ink(g, 3.5);
+      g.ellipse(6, -24, 7, 5, 0, 0, U.TAU);
+      ink(g, 2.5);
+      g.fillStyle = '#dceef6';
+      rr(g, -17, -19, 34, 42, 6);
+      g.fill();
+      ink(g, 3.2);
+      g.fillStyle = '#f2a83b';
+      rr(g, -14, -15, 28, 35, 4);
+      g.fill();
       g.fillStyle = '#d9820e';
       g.beginPath();
-      g.ellipse(-4, 17, 4, 6, 0, 0, U.TAU);
-      g.ellipse(12, 19, 3, 5, 0, 0, U.TAU);
+      g.ellipse(15, -4, 3, 7, 0, 0, U.TAU);
       g.fill();
-      gloss(g, -8, -9, 6, 3);
-      face(g, 0, -3, 0.85, 'shifty');
+      g.fillStyle = '#fff';
+      rr(g, -14, 2, 28, 14, 3);
+      g.fill();
+      g.strokeStyle = C.ink;
+      g.lineWidth = 2;
+      rr(g, -14, 2, 28, 14, 3);
+      g.stroke();
+      sticker(g, 'GREASE', 0, 9, 8, '#c76a08', 0);
+      face(g, 0, -7, 0.5, 'shifty');
+      gloss(g, -12, -6, 2.5, 9, 0);
+      g.restore();
     });
     sprite('toy', 56, 52, function (g) {
       g.fillStyle = '#57c04f';
@@ -341,33 +362,49 @@
       sticker(g, '3', 6, -15, 6, '#fff', 0);
     });
     sprite('fish', 58, 46, function (g) {
+      /* the goldfish: belly-up, X eyes. destined for a real funeral */
       g.fillStyle = '#ff8c42';
       g.beginPath();
       g.ellipse(-3, 0, 17, 12, 0, 0, U.TAU);
       g.fill();
       g.beginPath();
-      g.moveTo(12, 0); g.lineTo(26, -11); g.lineTo(26, 11);
+      g.moveTo(12, 0); g.lineTo(26, -8); g.lineTo(26, 13);
       g.closePath();
       g.fill();
       g.beginPath();
       g.ellipse(-3, 0, 17, 12, 0, 0, U.TAU);
       ink(g, 3);
       g.beginPath();
-      g.moveTo(12, 0); g.lineTo(26, -11); g.lineTo(26, 11);
+      g.moveTo(12, 0); g.lineTo(26, -8); g.lineTo(26, 13);
       g.closePath();
       ink(g, 3);
+      /* belly stripe on TOP: he is upside down */
       g.fillStyle = '#ffb347';
       g.beginPath();
-      g.ellipse(-2, 8, 8, 4, 0, 0, U.TAU);
+      g.ellipse(-2, -8, 8, 4, 0, 0, U.TAU);
       g.fill();
-      g.fillStyle = '#fff';
-      g.beginPath(); g.arc(-11, -3, 5.5, 0, U.TAU); g.fill();
-      g.strokeStyle = C.ink; g.lineWidth = 1.6;
-      g.beginPath(); g.arc(-11, -3, 5.5, 0, U.TAU); g.stroke();
-      g.fillStyle = C.ink;
-      g.beginPath(); g.arc(-12, -3, 1.7, 0, U.TAU); g.fill();
-      g.beginPath(); g.arc(-19, 4, 2.6, 0, U.TAU);
-      g.strokeStyle = C.ink; g.lineWidth = 2; g.stroke();
+      /* limp fin */
+      g.fillStyle = '#e8752e';
+      g.beginPath();
+      g.moveTo(-2, 10); g.quadraticCurveTo(2, 18, 8, 14); g.quadraticCurveTo(4, 10, 2, 8);
+      g.closePath();
+      g.fill();
+      ink(g, 2);
+      /* X eye */
+      g.strokeStyle = C.ink;
+      g.lineWidth = 2.4;
+      g.beginPath();
+      g.moveTo(-14, -6); g.lineTo(-8, 0);
+      g.moveTo(-8, -6); g.lineTo(-14, 0);
+      g.stroke();
+      /* tongue lolling out */
+      g.fillStyle = '#e8607a';
+      g.beginPath();
+      g.ellipse(-19, 6, 3, 4.5, 0.5, 0, U.TAU);
+      g.fill();
+      g.beginPath();
+      g.ellipse(-19, 6, 3, 4.5, 0.5, 0, U.TAU);
+      ink(g, 1.6);
     });
     sprite('diaper', 58, 50, function (g) {
       g.fillStyle = '#fff';
@@ -487,23 +524,55 @@
       g.stroke();
       g.restore();
     });
-    sprite('hair', 52, 48, function (g) {
-      g.fillStyle = '#4d3a28';
+    sprite('hair', 54, 50, function (g) {
+      /* shower-drain hair tangle: jet black + stringy, nothing like a poo */
+      g.strokeStyle = '#2b2620';
+      g.lineWidth = 3.4;
       g.beginPath();
-      g.ellipse(0, 2, 19, 15, 0, 0, U.TAU);
+      g.moveTo(-16, -4);
+      g.bezierCurveTo(-4, -20, 14, -16, 12, -2);
+      g.bezierCurveTo(22, -10, 24, 8, 8, 10);
+      g.bezierCurveTo(18, 18, -2, 22, -6, 10);
+      g.bezierCurveTo(-20, 18, -26, 2, -14, -2);
+      g.bezierCurveTo(-24, -10, -8, -22, 0, -12);
+      g.stroke();
+      g.fillStyle = '#332e27';
+      g.beginPath();
+      g.ellipse(0, 1, 13, 10, 0.2, 0, U.TAU);
       g.fill();
-      g.strokeStyle = '#2e2318';
-      g.lineWidth = 2;
-      for (var i = 0; i < 7; i++) {
-        var a = i * 0.9;
-        g.beginPath();
-        g.arc(Math.cos(a) * 8, 2 + Math.sin(a) * 6, 9 + (i % 3) * 3, a, a + 2.4);
-        g.stroke();
-      }
+      g.strokeStyle = '#57504a';
+      g.lineWidth = 1.6;
       g.beginPath();
-      g.ellipse(0, 2, 19, 15, 0, 0, U.TAU);
-      ink(g, 3);
-      face(g, 0, -1, 0.7, 'panic');
+      g.moveTo(-10, -6);
+      g.bezierCurveTo(0, -12, 8, -8, 10, 0);
+      g.moveTo(-12, 6);
+      g.bezierCurveTo(-2, 12, 8, 8, 12, 4);
+      g.stroke();
+      g.strokeStyle = '#2b2620';
+      g.lineWidth = 1.6;
+      g.beginPath();
+      g.moveTo(14, -8); g.quadraticCurveTo(22, -14, 25, -10);
+      g.moveTo(-16, -8); g.quadraticCurveTo(-24, -14, -25, -8);
+      g.moveTo(4, 14); g.quadraticCurveTo(8, 20, 14, 20);
+      g.moveTo(-8, 14); g.quadraticCurveTo(-12, 21, -18, 19);
+      g.moveTo(12, 10); g.quadraticCurveTo(20, 14, 24, 12);
+      g.stroke();
+      /* horrified little face, white so it reads on black */
+      g.fillStyle = '#fff';
+      g.beginPath();
+      g.arc(-5, -1, 4, 0, U.TAU);
+      g.arc(5, -1, 4, 0, U.TAU);
+      g.fill();
+      g.fillStyle = C.ink;
+      g.beginPath();
+      g.arc(-5, 0, 1.8, 0, U.TAU);
+      g.arc(5, 0, 1.8, 0, U.TAU);
+      g.fill();
+      g.strokeStyle = '#fff';
+      g.lineWidth = 2;
+      g.beginPath();
+      g.arc(0, 7, 3, 0, U.TAU);
+      g.stroke();
     });
     sprite('pad', 58, 42, function (g) {
       g.save();
@@ -524,55 +593,221 @@
       g.stroke();
       g.restore();
     });
-  }
-
-  /* Sarge: drill sergeant poo mascot */
-  function drawSarge(g, s) {
-    g.save();
-    g.scale(s, s);
-    pooBody(g, 1.35);
-    g.strokeStyle = C.ink;
-    g.lineWidth = 4;
-    g.beginPath();
-    g.moveTo(-30, 6); g.quadraticCurveTo(-42, 0, -44, -12);
-    g.stroke();
-    g.beginPath();
-    g.moveTo(30, 6); g.quadraticCurveTo(44, 4, 50, -6);
-    g.stroke();
-    g.fillStyle = C.poo;
-    g.beginPath(); g.arc(-44, -13, 5.5, 0, U.TAU); g.fill(); ink(g, 3);
-    g.beginPath(); g.arc(51, -7, 5.5, 0, U.TAU); g.fill(); ink(g, 3);
-    face(g, 0, 0, 1.35, 'angry');
-    g.fillStyle = '#6b7a3a';
-    g.beginPath();
-    g.ellipse(1, -26, 30, 7, 0, 0, U.TAU);
-    g.fill();
-    ink(g, 3.5);
-    g.beginPath();
-    g.moveTo(-16, -28);
-    g.quadraticCurveTo(-14, -46, 1, -46);
-    g.quadraticCurveTo(16, -46, 18, -28);
-    g.closePath();
-    g.fillStyle = '#6b7a3a';
-    g.fill();
-    ink(g, 3.5);
-    g.fillStyle = C.gold;
-    g.beginPath(); g.arc(1, -36, 4.5, 0, U.TAU); g.fill();
-    g.strokeStyle = C.ink; g.lineWidth = 2; g.stroke();
-    g.restore();
+    sprite('duck', 56, 52, function (g) {
+      /* rubber duck: serene, squeaky, absolutely not flushable */
+      g.fillStyle = '#ffd23f';
+      g.beginPath();
+      g.ellipse(3, 9, 19, 12, 0, 0, U.TAU);
+      g.fill();
+      g.beginPath();
+      g.moveTo(16, 4);
+      g.quadraticCurveTo(30, -6, 25, 12);
+      g.quadraticCurveTo(19, 10, 13, 12);
+      g.closePath();
+      g.fill();
+      g.beginPath();
+      g.ellipse(3, 9, 19, 12, 0, 0, U.TAU);
+      ink(g, 3);
+      g.fillStyle = '#ffd23f';
+      g.beginPath();
+      g.arc(-10, -8, 12, 0, U.TAU);
+      g.fill();
+      g.beginPath();
+      g.arc(-10, -8, 12, 0, U.TAU);
+      ink(g, 3);
+      g.fillStyle = '#f5641e';
+      rr(g, -28, -8, 13, 8, 4);
+      g.fill();
+      g.strokeStyle = C.ink;
+      g.lineWidth = 2.5;
+      rr(g, -28, -8, 13, 8, 4);
+      g.stroke();
+      g.strokeStyle = '#d9a41f';
+      g.lineWidth = 2.5;
+      g.beginPath();
+      g.arc(6, 8, 8, Math.PI * 0.2, Math.PI * 1.1);
+      g.stroke();
+      g.fillStyle = C.ink;
+      g.beginPath();
+      g.arc(-13, -11, 2.2, 0, U.TAU);
+      g.fill();
+      gloss(g, -4, 2, 5, 3);
+    });
+    sprite('car', 58, 46, function (g) {
+      /* toy car: somebody's favorite die-cast racer */
+      g.fillStyle = C.red;
+      g.beginPath();
+      g.moveTo(-25, 8);
+      g.lineTo(-25, -1);
+      g.quadraticCurveTo(-22, -6, -13, -7);
+      g.quadraticCurveTo(-9, -16, 1, -16);
+      g.quadraticCurveTo(11, -16, 14, -7);
+      g.quadraticCurveTo(23, -6, 25, -1);
+      g.lineTo(25, 8);
+      g.quadraticCurveTo(0, 11, -25, 8);
+      g.closePath();
+      g.fill();
+      ink(g, 3);
+      g.fillStyle = '#9fd8ff';
+      g.beginPath();
+      g.moveTo(-8, -13);
+      g.lineTo(0, -13);
+      g.lineTo(0, -7);
+      g.lineTo(-11, -7);
+      g.closePath();
+      g.fill();
+      g.strokeStyle = C.ink;
+      g.lineWidth = 2;
+      g.stroke();
+      g.fillStyle = '#9fd8ff';
+      g.beginPath();
+      g.moveTo(3, -13);
+      g.lineTo(8, -13);
+      g.lineTo(11, -7);
+      g.lineTo(3, -7);
+      g.closePath();
+      g.fill();
+      g.stroke();
+      function wheel(wx) {
+        g.fillStyle = '#23262b';
+        g.beginPath();
+        g.arc(wx, 9, 7, 0, U.TAU);
+        g.fill();
+        g.strokeStyle = C.ink;
+        g.lineWidth = 2.5;
+        g.stroke();
+        g.fillStyle = '#8d979e';
+        g.beginPath();
+        g.arc(wx, 9, 3, 0, U.TAU);
+        g.fill();
+      }
+      wheel(-13);
+      wheel(14);
+      gloss(g, -17, -2, 4, 2);
+    });
+    sprite('brick', 46, 40, function (g) {
+      /* toy building brick: sworn enemy of bare feet and drain pipes */
+      g.save();
+      g.rotate(0.14);
+      g.fillStyle = '#2f7fe0';
+      rr(g, -16, -6, 32, 18, 3);
+      g.fill();
+      ink(g, 3);
+      g.fillStyle = '#5ea1f2';
+      g.beginPath();
+      g.ellipse(-8, -6, 6, 4, 0, 0, U.TAU);
+      g.fill();
+      g.strokeStyle = C.ink;
+      g.lineWidth = 2.2;
+      g.stroke();
+      g.fillStyle = '#5ea1f2';
+      g.beginPath();
+      g.ellipse(8, -6, 6, 4, 0, 0, U.TAU);
+      g.fill();
+      g.stroke();
+      g.fillStyle = '#1d5cb0';
+      rr(g, -15, 7, 30, 4, 2);
+      g.fill();
+      g.restore();
+    });
+    sprite('hamster', 60, 50, function (g) {
+      /* the class hamster: belly-up, paws to heaven. gone, not flushed */
+      g.fillStyle = '#e8a25c';
+      g.beginPath();
+      g.ellipse(4, 4, 20, 13, 0, 0, U.TAU);
+      g.fill();
+      g.beginPath();
+      g.ellipse(4, 4, 20, 13, 0, 0, U.TAU);
+      ink(g, 3);
+      g.fillStyle = '#f7e3c8';
+      g.beginPath();
+      g.ellipse(6, 2, 11, 7, 0, 0, U.TAU);
+      g.fill();
+      /* stiff little paws, pointing up */
+      function paw(x1, y1, x2, y2) {
+        g.strokeStyle = C.ink;
+        g.lineWidth = 4.5;
+        g.beginPath();
+        g.moveTo(x1, y1); g.lineTo(x2, y2);
+        g.stroke();
+        g.strokeStyle = '#e8a25c';
+        g.lineWidth = 2.4;
+        g.beginPath();
+        g.moveTo(x1, y1); g.lineTo(x2, y2);
+        g.stroke();
+      }
+      paw(0, -7, -1, -16);
+      paw(7, -8, 7, -17);
+      paw(14, -6, 16, -14);
+      paw(20, -4, 23, -11);
+      /* head tipped back at the left end */
+      g.fillStyle = '#e8a25c';
+      g.beginPath();
+      g.arc(-16, -1, 10, 0, U.TAU);
+      g.fill();
+      g.beginPath();
+      g.arc(-16, -1, 10, 0, U.TAU);
+      ink(g, 3);
+      g.fillStyle = '#e8a25c';
+      g.beginPath();
+      g.arc(-23, -9, 3.6, 0, U.TAU);
+      g.fill();
+      g.beginPath();
+      g.arc(-23, -9, 3.6, 0, U.TAU);
+      ink(g, 2);
+      g.fillStyle = '#e8a25c';
+      g.beginPath();
+      g.arc(-10, -10, 3.6, 0, U.TAU);
+      g.fill();
+      g.beginPath();
+      g.arc(-10, -10, 3.6, 0, U.TAU);
+      ink(g, 2);
+      /* X eyes */
+      g.strokeStyle = C.ink;
+      g.lineWidth = 2;
+      g.beginPath();
+      g.moveTo(-22, -5); g.lineTo(-18, -1);
+      g.moveTo(-18, -5); g.lineTo(-22, -1);
+      g.moveTo(-14, -5); g.lineTo(-10, -1);
+      g.moveTo(-10, -5); g.lineTo(-14, -1);
+      g.stroke();
+      /* tongue out */
+      g.fillStyle = '#e8607a';
+      rr(g, -19, 4, 6, 7, 3);
+      g.fill();
+      g.strokeStyle = C.ink;
+      g.lineWidth = 1.6;
+      rr(g, -19, 4, 6, 7, 3);
+      g.stroke();
+      /* tiny tail */
+      g.strokeStyle = '#c9854a';
+      g.lineWidth = 2.5;
+      g.beginPath();
+      g.moveTo(23, 8);
+      g.quadraticCurveTo(28, 6, 27, 11);
+      g.stroke();
+    });
   }
 
   /* THE Lanik mascot, faithful to the decal painted on the real truck:
-     stocky little guy with a HUGE head, wide black shades, an enormous
-     teeth-grid grin, orange-red cap, white tee + gloves, blue shorts, big
-     tan work boots, green hose loop, standing in his puddle. (x,y) = ground
-     point between his feet; at s=1 he stands ~180 world px tall. */
+     a happy pear of a guy who is mostly head and belly. Giant piano-key
+     grin, wide black shades, peach cap with the red L, white tee over a
+     proud gut, denim shorts, tan work gloves + gold boots ankle-deep in
+     his puddle, green hose looped at his side, blue bucket, thumbs up.
+     (x,y) = ground point between his feet; at s=1 he stands ~205 world
+     px tall. */
   function mascot(g, x, y, o) {
     o = o || {};
     var s = o.s || 1;
-    var leg = o.moving ? Math.sin((o.walk || 0) * 10) * 6 : 0;
-    var SKIN = '#f2ead9';
-    var CAP = '#e0532e';
+    var leg = o.moving ? Math.sin((o.walk || 0) * 10) * 7 : 0;
+    var bob = o.moving ? Math.abs(Math.cos((o.walk || 0) * 10)) * 2.5 : 0;
+    var SKIN = '#f2e7d2';
+    var TEE = '#fdfcf7';
+    var CAP = '#eb9257';
+    var CAPD = '#cf7038';
+    var TAN = '#dfa94e';
+    var TAND = '#b3813a';
+    var JEAN = '#4272cc';
     g.save();
     g.translate(x, y);
     if (o.flip) g.scale(-1, 1);
@@ -580,206 +815,251 @@
     g.lineJoin = 'round';
     g.lineCap = 'round';
 
+    /* muck pool, back layer */
     if (o.puddle) {
-      g.fillStyle = '#6b4a26';
+      g.fillStyle = '#5d3d1d';
       g.beginPath();
-      g.ellipse(0, -2, 54, 12, 0, 0, U.TAU);
-      g.ellipse(-48, 1, 14, 6, 0, 0, U.TAU);
-      g.ellipse(47, 0, 16, 7, 0, 0, U.TAU);
+      g.ellipse(2, -3, 64, 13, 0, 0, U.TAU);
+      g.ellipse(-58, 0, 16, 7, 0, 0, U.TAU);
+      g.ellipse(56, -1, 18, 8, 0, 0, U.TAU);
       g.fill();
-      g.fillStyle = '#59391a';
+      g.fillStyle = '#4a2f14';
       g.beginPath();
-      g.ellipse(0, -1, 40, 7, 0, 0, U.TAU);
+      g.ellipse(2, -2, 46, 8, 0, 0, U.TAU);
       g.fill();
     }
     if (o.bucket) {
       g.fillStyle = '#3f8fd6';
       g.beginPath();
-      g.moveTo(-86, -30);
-      g.lineTo(-62, -30);
-      g.lineTo(-65, -2);
-      g.lineTo(-83, -2);
+      g.moveTo(-92, -28);
+      g.lineTo(-68, -28);
+      g.lineTo(-71, -2);
+      g.lineTo(-89, -2);
       g.closePath();
       g.fill();
       g.strokeStyle = C.ink;
       g.lineWidth = 3;
       g.stroke();
+      g.fillStyle = '#2c6cab';
       g.beginPath();
-      g.arc(-74, -30, 11, Math.PI, 0);
+      g.ellipse(-80, -28, 12, 3.5, 0, 0, U.TAU);
+      g.fill();
+      g.strokeStyle = C.ink;
       g.lineWidth = 2.5;
       g.stroke();
     }
+
+    g.translate(0, -bob);
+
+    /* the hose: out of his grip, up and over in a lazy loop, one ground
+       curl, tip trailing off into the muck */
     if (o.hose) {
       var hosePath = function () {
         g.beginPath();
-        g.moveTo(-30, -56);
-        g.bezierCurveTo(-58, -48, -68, -32, -58, -20);
-        g.arc(-42, -20, 17, 3.4, 9.0);
-        g.bezierCurveTo(-8, -2, 22, -10, 38, -5);
+        g.moveTo(-36, -64);
+        g.bezierCurveTo(-58, -80, -84, -74, -86, -46);
+        g.bezierCurveTo(-87, -26, -76, -12, -62, -10);
+        g.arc(-46, -17, 13, Math.PI * 0.82, Math.PI * 2.55);
+        g.bezierCurveTo(-38, -2, -20, -2, -8, -5);
       };
       g.strokeStyle = C.hoseDark;
-      g.lineWidth = 12;
+      g.lineWidth = 11;
       hosePath();
       g.stroke();
       g.strokeStyle = C.hose;
-      g.lineWidth = 8;
+      g.lineWidth = 7.5;
       hosePath();
-      g.stroke();
-      g.fillStyle = C.nozzle;
-      rr(g, 36, -11, 13, 10, 3);
-      g.fill();
-      g.strokeStyle = C.ink;
-      g.lineWidth = 2.5;
-      rr(g, 36, -11, 13, 10, 3);
       g.stroke();
     }
 
-    /* short thick legs + big boots */
-    function legPaths() {
-      g.beginPath();
-      g.moveTo(-11, -46);
-      g.lineTo(-12 + leg, -14);
-      g.moveTo(11, -46);
-      g.lineTo(12 - leg, -14);
-      g.stroke();
-    }
-    g.strokeStyle = C.ink;
-    g.lineWidth = 15;
-    legPaths();
-    g.strokeStyle = SKIN;
-    g.lineWidth = 11;
-    legPaths();
-    function boot(bx) {
-      g.fillStyle = '#bc8b52';
-      rr(g, bx - 11, -16, 30, 16, 6);
+    /* stubby denim legs + gold work boots */
+    function legAt(lx) {
+      g.fillStyle = JEAN;
+      rr(g, lx - 9, -46, 18, 30, 6);
       g.fill();
       g.strokeStyle = C.ink;
       g.lineWidth = 3;
-      rr(g, bx - 11, -16, 30, 16, 6);
+      rr(g, lx - 9, -46, 18, 30, 6);
       g.stroke();
-      g.fillStyle = '#8f6534';
-      rr(g, bx - 11, -7, 30, 7, 3);
+    }
+    function bootAt(bx, dir) {
+      var bl = dir < 0 ? bx - 22 : bx - 9;
+      g.fillStyle = TAN;
+      rr(g, bl, -16, 31, 15, 6);
+      g.fill();
+      g.strokeStyle = C.ink;
+      g.lineWidth = 3;
+      rr(g, bl, -16, 31, 15, 6);
+      g.stroke();
+      g.fillStyle = TAND;
+      rr(g, bl, -8, 31, 7, 3);
       g.fill();
     }
-    boot(-12 + leg);
-    boot(12 - leg);
+    legAt(-15 + leg);
+    legAt(15 - leg);
+    bootAt(-15 + leg, -1);
+    bootAt(15 - leg, 1);
 
-    /* denim shorts */
-    g.fillStyle = '#3b6fd6';
-    rr(g, -21, -68, 42, 26, 9);
+    /* denim shorts under the overhang of the belly */
+    g.fillStyle = JEAN;
+    g.beginPath();
+    g.moveTo(-31, -62);
+    g.quadraticCurveTo(0, -56, 31, -62);
+    g.quadraticCurveTo(33, -40, 26, -34);
+    g.quadraticCurveTo(0, -28, -26, -34);
+    g.quadraticCurveTo(-33, -40, -31, -62);
+    g.closePath();
     g.fill();
     g.strokeStyle = C.ink;
     g.lineWidth = 3.5;
-    rr(g, -21, -68, 42, 26, 9);
     g.stroke();
     g.strokeStyle = '#2b52a3';
     g.lineWidth = 2.5;
     g.beginPath();
-    g.moveTo(0, -62);
-    g.lineTo(0, -46);
+    g.moveTo(0, -52);
+    g.lineTo(0, -32);
     g.stroke();
+    g.fillStyle = '#6e97e8';
+    g.beginPath();
+    g.ellipse(-14, -44, 5, 4, 0.3, 0, U.TAU);
+    g.fill();
 
-    /* stocky pear torso in the white tee */
-    function torsoPath() {
+    /* the belly: a proud white egg, wider than the head */
+    function bellyPath() {
       g.beginPath();
-      g.moveTo(-19, -104);
-      g.bezierCurveTo(-31, -95, -33, -76, -26, -64);
-      g.lineTo(26, -64);
-      g.bezierCurveTo(33, -76, 31, -95, 19, -104);
-      g.quadraticCurveTo(0, -110, -19, -104);
+      g.moveTo(-21, -120);
+      g.bezierCurveTo(-42, -110, -48, -76, -37, -54);
+      g.quadraticCurveTo(0, -46, 37, -54);
+      g.bezierCurveTo(48, -76, 42, -110, 21, -120);
+      g.quadraticCurveTo(0, -127, -21, -120);
       g.closePath();
     }
-    g.fillStyle = '#fff';
-    torsoPath();
+    g.fillStyle = TEE;
+    bellyPath();
     g.fill();
     g.strokeStyle = C.ink;
     g.lineWidth = 3.5;
-    torsoPath();
+    bellyPath();
     g.stroke();
-    gloss(g, -11, -94, 6, 3);
-    if (!o.flip) sticker(g, 'LANIK', 0, -86, 8.5, C.blue, 0);
+    g.strokeStyle = 'rgba(26,26,26,0.16)';
+    g.lineWidth = 2.5;
+    g.beginPath();
+    g.moveTo(-30, -58);
+    g.quadraticCurveTo(0, -50, 30, -58);
+    g.stroke();
+    gloss(g, -16, -102, 7, 3.5);
+    /* chest pocket, like the decal */
+    g.strokeStyle = '#b9b2a2';
+    g.lineWidth = 2;
+    rr(g, 13, -106, 14, 12, 3);
+    g.stroke();
+    if (!o.flip) {
+      g.fillStyle = '#8d97a5';
+      g.font = '800 5px ' + FONT;
+      g.textAlign = 'center';
+      g.textBaseline = 'middle';
+      g.fillText('LANIK', 20, -100);
+    }
 
-    /* thick arms (white sleeves, ink-outlined) + gloves */
+    /* arms: white sleeves; one hand works the hose, the other throws
+       the world-famous thumbs-up */
     function armPaths() {
       g.beginPath();
       if (o.hose) {
-        g.moveTo(-17, -98);
-        g.quadraticCurveTo(-33, -84, -30, -58);
+        g.moveTo(-24, -112);
+        g.bezierCurveTo(-46, -104, -50, -86, -40, -68);
       } else if (o.carrying) {
-        g.moveTo(-17, -98);
-        g.lineTo(-36, -80);
+        g.moveTo(-24, -112);
+        g.quadraticCurveTo(-46, -102, -50, -84);
       } else {
-        g.moveTo(-17, -98);
-        g.lineTo(-26, -66 + leg * 0.5);
+        g.moveTo(-24, -112);
+        g.quadraticCurveTo(-44, -98, -41, -74);
       }
       if (o.thumbsUp) {
-        g.moveTo(17, -98);
-        g.quadraticCurveTo(36, -92, 41, -116);
+        g.moveTo(24, -112);
+        g.bezierCurveTo(44, -108, 47, -116, 45, -128);
       } else {
-        g.moveTo(17, -98);
-        g.lineTo(27, -66 - leg * 0.5);
+        g.moveTo(24, -112);
+        g.quadraticCurveTo(44, -98, 41, -74);
       }
       g.stroke();
     }
     g.strokeStyle = C.ink;
-    g.lineWidth = 14;
+    g.lineWidth = 15;
     armPaths();
-    g.strokeStyle = '#fff';
-    g.lineWidth = 10;
+    g.strokeStyle = TEE;
+    g.lineWidth = 10.5;
     armPaths();
+    if (o.hose) {
+      /* brass coupling poking up out of his grip */
+      g.save();
+      g.translate(-37, -71);
+      g.rotate(-0.7);
+      g.fillStyle = TAN;
+      rr(g, -5.5, -11, 11, 20, 4);
+      g.fill();
+      g.strokeStyle = C.ink;
+      g.lineWidth = 2.5;
+      rr(g, -5.5, -11, 11, 20, 4);
+      g.stroke();
+      g.restore();
+    }
     function glove(gx, gy, r) {
-      g.fillStyle = '#fff';
+      g.fillStyle = TAN;
       g.beginPath();
-      g.arc(gx, gy, r || 7, 0, U.TAU);
+      g.arc(gx, gy, r || 8, 0, U.TAU);
       g.fill();
       g.strokeStyle = C.ink;
       g.lineWidth = 2.5;
       g.stroke();
     }
-    if (o.hose) glove(-30, -57);
-    else if (o.carrying) glove(-36, -80);
-    else glove(-26, -66 + leg * 0.5);
+    if (o.hose) glove(-39, -66, 8.5);
+    else if (o.carrying) glove(-50, -84, 8.5);
+    else glove(-41, -73, 8);
     if (o.thumbsUp) {
-      glove(41, -118, 10);
-      g.fillStyle = '#fff';
-      rr(g, 37, -139, 9, 17, 4.5);
+      /* chunky fist by the cheek, thumb to the sky */
+      g.fillStyle = TAN;
+      rr(g, 37, -125, 13, 10, 4);
       g.fill();
       g.strokeStyle = C.ink;
       g.lineWidth = 2.5;
-      rr(g, 37, -139, 9, 17, 4.5);
+      rr(g, 37, -125, 13, 10, 4);
+      g.stroke();
+      g.fillStyle = TAN;
+      rr(g, 41, -152, 10, 17, 5);
+      g.fill();
+      g.strokeStyle = C.ink;
+      g.lineWidth = 2.5;
+      rr(g, 41, -152, 10, 17, 5);
+      g.stroke();
+      glove(46, -133, 11.5);
+      /* knuckle lines */
+      g.strokeStyle = C.ink;
+      g.lineWidth = 1.6;
+      g.beginPath();
+      g.moveTo(41, -140);
+      g.quadraticCurveTo(46, -143, 51, -140);
       g.stroke();
     } else {
-      glove(27, -66 - leg * 0.5);
+      glove(41, -73, 8);
     }
 
-    /* HUGE head: ears, pale face, giant teeth-grid grin, wide shades */
+    /* the head: giant, no neck, mostly grin */
     g.fillStyle = SKIN;
     g.beginPath();
-    g.arc(-27, -134, 5.5, 0, U.TAU);
-    g.arc(27, -134, 5.5, 0, U.TAU);
-    g.fill();
-    g.strokeStyle = C.ink;
-    g.lineWidth = 2.5;
-    g.beginPath();
-    g.arc(-27, -134, 5.5, 0, U.TAU);
-    g.stroke();
-    g.beginPath();
-    g.arc(27, -134, 5.5, 0, U.TAU);
-    g.stroke();
-    g.fillStyle = SKIN;
-    g.beginPath();
-    g.arc(0, -134, 27, 0, U.TAU);
+    g.ellipse(0, -149, 30, 32, 0, 0, U.TAU);
     g.fill();
     g.strokeStyle = C.ink;
     g.lineWidth = 3.5;
     g.stroke();
-    /* the grin fills the whole lower face */
+    /* the piano-key grin, bulging past the jaw */
     g.fillStyle = '#fff';
     g.beginPath();
-    g.moveTo(-21, -135);
-    g.quadraticCurveTo(0, -127, 21, -135);
-    g.quadraticCurveTo(17, -109, 0, -107);
-    g.quadraticCurveTo(-17, -109, -21, -135);
+    g.moveTo(-23, -154);
+    g.quadraticCurveTo(0, -146, 23, -154);
+    g.quadraticCurveTo(24, -124, 8, -114);
+    g.quadraticCurveTo(0, -110, -8, -114);
+    g.quadraticCurveTo(-24, -124, -23, -154);
     g.closePath();
     g.fill();
     g.strokeStyle = C.ink;
@@ -787,53 +1067,101 @@
     g.stroke();
     g.lineWidth = 1.5;
     g.beginPath();
-    g.moveTo(-13, -131);
-    g.lineTo(-12, -112);
-    g.moveTo(-6.5, -130);
-    g.lineTo(-6, -109);
-    g.moveTo(0, -129);
-    g.lineTo(0, -108);
-    g.moveTo(6.5, -130);
-    g.lineTo(6, -109);
-    g.moveTo(13, -131);
-    g.lineTo(12, -112);
+    g.moveTo(-15, -149);
+    g.lineTo(-13, -121);
+    g.moveTo(-7.5, -148);
+    g.lineTo(-7, -114);
+    g.moveTo(0, -147);
+    g.lineTo(0, -112);
+    g.moveTo(7.5, -148);
+    g.lineTo(7, -114);
+    g.moveTo(15, -149);
+    g.lineTo(13, -121);
     g.stroke();
     g.beginPath();
-    g.moveTo(-18, -122);
-    g.lineTo(18, -122);
+    g.moveTo(-21, -134);
+    g.lineTo(21, -134);
     g.stroke();
-    /* wide wraparound shades */
+    /* wide wraparound shades, glinting */
     g.fillStyle = C.ink;
-    rr(g, -26, -153, 52, 13, 6);
+    rr(g, -29, -175, 58, 14, 7);
     g.fill();
-    g.fillStyle = 'rgba(255,255,255,0.35)';
+    g.fillStyle = 'rgba(255,255,255,0.45)';
     g.beginPath();
-    g.moveTo(-19, -151);
-    g.lineTo(-11, -142);
-    g.lineTo(-15, -142);
-    g.lineTo(-22, -150);
+    g.moveTo(-21, -173);
+    g.lineTo(-13, -164);
+    g.lineTo(-17, -164);
+    g.lineTo(-24, -172);
     g.closePath();
     g.fill();
-    /* orange-red cap */
+    g.beginPath();
+    g.moveTo(5, -173);
+    g.lineTo(11, -166);
+    g.lineTo(8, -166);
+    g.lineTo(2, -172);
+    g.closePath();
+    g.fill();
+    /* the peach cap: dome, seam, left brim over the shades, red L */
     g.fillStyle = CAP;
     g.beginPath();
-    g.arc(0, -153, 27, Math.PI, 0);
+    g.arc(0, -172, 30, Math.PI, 0);
     g.closePath();
     g.fill();
     g.strokeStyle = C.ink;
     g.lineWidth = 3.5;
     g.stroke();
-    rr(g, 11, -164, 29, 9, 4.5);
+    g.strokeStyle = CAPD;
+    g.lineWidth = 2;
+    g.beginPath();
+    g.moveTo(-9, -200);
+    g.quadraticCurveTo(-13, -188, -12, -176);
+    g.stroke();
     g.fillStyle = CAP;
+    rr(g, -42, -181, 33, 9, 4.5);
     g.fill();
     g.strokeStyle = C.ink;
     g.lineWidth = 2.5;
-    rr(g, 11, -164, 29, 9, 4.5);
+    rr(g, -42, -181, 33, 9, 4.5);
     g.stroke();
-    g.fillStyle = '#b23f16';
-    g.beginPath();
-    g.arc(0, -180, 3.2, 0, U.TAU);
+    g.fillStyle = CAPD;
+    rr(g, -42, -175, 33, 3, 1.5);
     g.fill();
+    g.fillStyle = CAPD;
+    g.beginPath();
+    g.arc(0, -201, 3.2, 0, U.TAU);
+    g.fill();
+    g.strokeStyle = C.ink;
+    g.lineWidth = 2;
+    g.stroke();
+    if (!o.flip) sticker(g, 'L', 8, -186, 15, C.red, 3, '#7c1212');
+
+    /* tan splash chunks riding over the boot tops */
+    if (o.puddle) {
+      g.fillStyle = '#d9b473';
+      function blob(bx, by, brx, bry, rot2) {
+        g.beginPath();
+        g.ellipse(bx, by, brx, bry, rot2 || 0, 0, U.TAU);
+        g.fill();
+        g.strokeStyle = C.ink;
+        g.lineWidth = 2.5;
+        g.stroke();
+      }
+      blob(-32, -7, 13, 8, -0.2);
+      blob(31, -5, 15, 8, 0.15);
+      blob(-56, -3, 9, 5, 0);
+      blob(52, -9, 7, 4.5, 0.4);
+      blob(8, -3, 8, 4, 0);
+      /* flying droplets, one path each so the fills don't join */
+      g.beginPath();
+      g.arc(-46, -26, 3, 0, U.TAU);
+      g.fill();
+      g.beginPath();
+      g.arc(44, -22, 2.6, 0, U.TAU);
+      g.fill();
+      g.beginPath();
+      g.arc(-14, -18, 2.2, 0, U.TAU);
+      g.fill();
+    }
 
     g.restore();
   }
@@ -842,7 +1170,7 @@
   function tech(g, x, y, o) {
     o = o || {};
     mascot(g, x, y, {
-      s: 0.43,
+      s: 0.38,
       walk: o.walk,
       moving: o.moving,
       flip: o.flip,
@@ -1114,10 +1442,6 @@
       g.fillRect(0, 0, 480, 800);
     });
 
-    sprite('sarge', 150, 150, function (g) {
-      g.translate(0, 14);
-      drawSarge(g, 1.05);
-    });
   }
 
   /* ---------- cinematic panels ---------- */
@@ -1296,7 +1620,7 @@
       g.beginPath(); g.arc(TRUCK.gauge.x, TRUCK.gauge.y, 10, 0, U.TAU); g.fill();
       g.strokeStyle = C.ink; g.lineWidth = 3; g.stroke();
       /* the mascot painted on the tank, just like the real truck */
-      mascot(g, 226, 87, { s: 0.15, thumbsUp: true, puddle: true });
+      mascot(g, 226, 87, { s: 0.14, thumbsUp: true, puddle: true, hose: true });
       /* mudflap */
       g.fillStyle = '#2c3036';
       rr(g, 272, 92, 6, 18, 2);
@@ -1600,14 +1924,26 @@
     c.height = size * 2;
     var g = c.getContext('2d');
     g.scale(2, 2);
-    var k = size / 196;
-    mascot(g, size * 0.58, size * 0.97, {
+    var k = size / 222;
+    mascot(g, size * 0.575, size * 0.96, {
       s: k,
       thumbsUp: true,
       hose: true,
       puddle: true,
       bucket: true
     });
+    return c.toDataURL();
+  }
+
+  /* waist-up mascot portrait: the big grin + thumbs-up, for the tip card */
+  function mascotBustDataURL(size) {
+    var c = document.createElement('canvas');
+    c.width = size * 2;
+    c.height = size * 2;
+    var g = c.getContext('2d');
+    g.scale(2, 2);
+    var k = (size - 6) / 105;
+    mascot(g, size * 0.45, 3 + 205 * k, { s: k, thumbsUp: true });
     return c.toDataURL();
   }
 
@@ -1665,6 +2001,7 @@
     tech: tech,
     mascot: mascot,
     mascotDataURL: mascotDataURL,
+    mascotBustDataURL: mascotBustDataURL,
     family: family,
     geyserColumn: geyserColumn,
     endCard: endCard,

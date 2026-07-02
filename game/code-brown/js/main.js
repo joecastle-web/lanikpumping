@@ -109,7 +109,7 @@
         els.critSub.textContent = 'It\'s erupting! There is only ONE number to call.';
       } else {
         els.critTitle.textContent = 'TANK AT 99%';
-        els.critSub.textContent = 'This is NOT a drill, soldier. You know what to do.';
+        els.critSub.textContent = 'That tank is FULL, friend. You know what to do.';
       }
       CB.audio.startLoop('siren');
       later(function () { els.btnCall.classList.add('show'); }, 1500);
@@ -148,7 +148,7 @@
   function showFact(p) {
     factPayload = p;
     factShownAt = performance.now();
-    els.factTitle.textContent = p.factTitle || 'SARGE SAYS';
+    els.factTitle.textContent = p.factTitle || 'LANIK GUY SAYS';
     els.factText.textContent = p.fact;
     setState('FACT');
   }
@@ -379,7 +379,7 @@
     $('how-i1').src = CB.art.sprDataURL('wipe', 64);
     $('how-i2').src = CB.art.sprDataURL('poo', 64);
     $('how-i3').src = CB.art.truckDataURL(64);
-    $('sarge-img').src = CB.art.sprDataURL('sarge', 150);
+    $('tip-mascot').src = CB.art.mascotBustDataURL(150);
     $('title-mascot').src = CB.art.mascotDataURL(148);
     $('res-mascot').src = CB.art.mascotDataURL(62);
   }

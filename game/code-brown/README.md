@@ -4,7 +4,7 @@ The browser game for **lanikpumping.com**, by **Lanik Pumping Service** ("We Tak
 
 Junk falls from the house toward your septic tank. **Tap the junk** (wipes, grease, paper towels, toys...) to fling it into the trash. **Never tap the 3 P's** (pee, poo, toilet paper): they belong in the tank. The tank fills no matter how well you play, because that is how septic tanks work. Survive all 6 waves, then make the only correct move: **CALL LANIK**. The Lanik truck rolls in and pumps the tank in a glorious cinematic. Overflow early and the truck still rescues you, with less glory.
 
-Every wave ends with a real septic-care fact delivered by Sarge, a drill-sergeant poo: the 3 P's rule, the "flushable" wipes lie, grease fatbergs, paper towels, absorbent products, and Lanik's own rule of thumb (pump every 3 years).
+Every wave ends with a real septic-care fact delivered by the Lanik Guy, the grinning thumbs-up mascot painted on the real truck: the 3 P's rule, the "flushable" wipes lie, grease fatbergs, paper towels, absorbent products, and Lanik's own rule of thumb (pump every 3 years).
 
 ## Run it locally
 
@@ -30,7 +30,7 @@ Sound starts after the first tap (browser autoplay rules). Works with mouse or t
 
 ## Tuning
 
-Everything gameplay-related lives at the top of `js/game.js`: `CONFIG` (start fill, per-item fill, `MISS_SCALE` / `PASSIVE_SCALE` master knobs), `WAVES` (counts, speeds, spawn intervals, item mixes, Sarge facts), scoring constants and grade thresholds.
+Everything gameplay-related lives at the top of `js/game.js`: `CONFIG` (start fill, per-item fill, `MISS_SCALE` / `PASSIVE_SCALE` master knobs), `WAVES` (counts, speeds, spawn intervals, item mixes, Lanik Guy facts), scoring constants and grade thresholds.
 
 ## Debug harness
 
